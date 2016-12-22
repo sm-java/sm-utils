@@ -15,11 +15,9 @@ import sun.misc.Unsafe;
  * @author smazumder6
  */
 public class UnsafeAccess {
-
+    
     public static final Unsafe UNSAFE;
-
     static {
-
         try {
             final PrivilegedExceptionAction<Unsafe> action = () -> {
                 final Field f = Unsafe.class.getDeclaredField("theUnsafe");
@@ -27,7 +25,6 @@ public class UnsafeAccess {
 
                 return (Unsafe) f.get(null);
             };
-
             UNSAFE = AccessController.doPrivileged(action);
         } catch (final Exception e) {
             throw new RuntimeException(e);
